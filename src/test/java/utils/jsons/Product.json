@@ -1,0 +1,18 @@
+{
+  "id": 1,
+  "category": {
+    "id": 1,
+    "name": "kitap"
+  },
+  "name": "Otostopçunun Galaksi Rehberi (Ciltli) - Douglas Adams",
+  "photoUrls": [
+    "https://www.hepsiburada.com/otostopcunun-galaksi-rehberi-ciltli-douglas-adams-p-HBV000006KS6R?magaza=Hepsiburada"
+  ],
+  "tags": [
+    {
+      "id": 1,
+      "name": "Otostopçunun Galaksi Rehberi"
+    }
+  ],
+  "status": "available"
+}
