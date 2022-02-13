@@ -7,7 +7,7 @@ public class PaymentStepDefinitions {
     private PaymentPage paymentPage = new PaymentPage();
 
     @And("^Buyer select (.*) instant transfer")
-    public void buyerShouldGoToPaymentPage(String bankName) {
+    public void buyerSelectInstantTransfer(String bankName) {
         paymentPage.payWithInstantTransfer(bankName).clickContinueOrderButton();
     }
 }

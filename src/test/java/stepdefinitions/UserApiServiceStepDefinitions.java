@@ -25,10 +25,10 @@ public class UserApiServiceStepDefinitions extends StrongerDriver {
     private ValidatableResponse response;
     private JSONObject buyerJson;
     private Buyer buyer;
-    private int count = 0, i = 0;
+    private int count = 0;
 
     @Given("^API Operator should create user$")
-    public void createUser(List<Map<String, String>> elementsList) {
+    public void apiOperatorShouldCreateUser(List<Map<String, String>> elementsList) {
         buyerJson = JsonUtils.getJson(configFileReader.getConfigValue("buyer.json.path"));
         while (elementsList.size() > count) {
             Map<String, String> parameter = elementsList.get(count);
@@ -48,18 +48,18 @@ public class UserApiServiceStepDefinitions extends StrongerDriver {
     }
 
     @And("^API Operator set user$")
-    public void APISetBuyer() {
-        while (i < 10) {
+    public void apiOperatorSetUser() {
+        while (count < 10) {
             buyer = buyerRequester.getBuyerByUserName(buyerJson.get("username").toString());
             if (buyerJson.get("id").toString().equals(String.valueOf(buyer.getId())))
                 break;
-            i++;
+            count++;
         }
         dataHooks.setBuyer(buyer);
     }
 
     @And("^API Operator should delete user with username as \"([^\"]*)\"$")
-    public void deleteUser(String userName) {
+    public void apiOperatorShouldDeleteUserWithUsernameAs(String userName) {
         if (userName.equals("VALID")) {
             userName = buyer.getUsername();
         }
@@ -68,7 +68,7 @@ public class UserApiServiceStepDefinitions extends StrongerDriver {
     }
 
     @And("^API Operator should edit user with username as \"([^\"]*)\"$")
-    public void editUser(String userName, List<Map<String, String>> elementsList) {
+    public void apiOperatorShouldEditUserWithUsernameAs(String userName, List<Map<String, String>> elementsList) {
         if (userName.equals("VALID")) {
             userName = dataHooks.getValue();
         }
@@ -89,7 +89,7 @@ public class UserApiServiceStepDefinitions extends StrongerDriver {
     }
 
     @Then("^Check api response$")
-    public void checkResponse(List<Map<String, String>> elementsList) {
+    public void checkApiResponse(List<Map<String, String>> elementsList) {
         response = dataHooks.getResponse();
         Map<String, String> parameters = elementsList.get(0);
         for (Map.Entry<String, String> entry : parameters.entrySet()) {
@@ -104,13 +104,13 @@ public class UserApiServiceStepDefinitions extends StrongerDriver {
     }
 
     @Then("^Check delete api response$")
-    public void checkDeleteResponse(List<Map<String, String>> elementsList) {
+    public void checkDeleteApiResponse(List<Map<String, String>> elementsList) {
         response = dataHooks.getResponse();
-        while (i < 10) {
+        while (count < 10) {
             buyer = buyerRequester.getBuyerByUserName(buyerJson.get("username").toString());
             if (!buyerJson.get("id").toString().equals(String.valueOf(buyer.getId())))
                 break;
-            i++;
+            count++;
         }
         Map<String, String> parameters = elementsList.get(0);
         for (Map.Entry<String, String> entry : parameters.entrySet()) {

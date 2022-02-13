@@ -14,7 +14,7 @@ Feature: INSTANT TRANSFER
     Then Buyer should see instant transfer bank name as <bankName> at Basket Summary Page
     Examples:
       | bankName      |
-      | Akbankkk      |
+      | Akbank        |
       | İş Bankası    |
       | Kuveyt Türk   |
       | Fibabanka     |

@@ -7,7 +7,7 @@ public class BasketSummaryStepDefinitions {
     private BasketSummaryPage basketSummaryPage = new BasketSummaryPage();
 
     @Then("^Buyer should see instant transfer bank name as (.*) at Basket Summary Page$")
-    public void userShouldSeeReceivedMessageAtJobApplicationSuccessPage(String bankName) {
+    public void buyerShouldSeeInstantTransferBankNameAsAtBasketSummaryPage(String bankName) {
         basketSummaryPage.checkBankNameForInstantTransfer(bankName);
     }
 }
