@@ -63,14 +63,14 @@ public class DriverHooks {
         if (scenario.isFailed()) {
             try {
                 File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-                DateFormat dateFormat = new SimpleDateFormat("_dd_MM_yyyy_HH:mm:ss");
+                DateFormat dateFormat = new SimpleDateFormat("dd_MM_yyyy_HH:mm:ss_");
                 Date date = new Date();
-                String desPath = "/screenshots/" + scenario.getName().replaceAll(" ", "") + dateFormat.format(date) + ".png";
+                String desPath = "/screenshots/" + dateFormat.format(date) + scenario.getName().replaceAll(" ", "") + ".png";
                 File destFile = new File(System.getProperty("user.dir") + desPath);
                 FileUtils.copyFile(scrFile, destFile);
-                logger.info(scenario.getName() + " is failed");
+                logger.error(scenario.getName() + " is failed");
             } catch (WebDriverException dontSupportScreenshots) {
-                logger.info(dontSupportScreenshots.getMessage());
+                logger.error(dontSupportScreenshots.getMessage());
             }
         }
         driver.quit();
