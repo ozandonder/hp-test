@@ -1,12 +1,14 @@
-package stepdefinitions;
+package step_definitions;
 
-import cucumber.api.java.After;
-import cucumber.api.java.Before;
-import cucumber.api.java.en.Given;
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
+import io.cucumber.java.en.Given;
 import io.restassured.response.ValidatableResponse;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.json.simple.JSONObject;
+
 import pages.HomePage;
 import pages.LoginPage;
 import restapi.models.Buyer;
@@ -14,7 +16,6 @@ import restapi.requesters.BuyerRequester;
 import utils.ConfigFileReader;
 import utils.JsonUtils;
 import utils.StrongerDriver;
-import cucumber.api.Scenario;
 import utils.DataHooks;
 
 import java.io.IOException;

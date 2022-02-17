@@ -54,11 +54,9 @@ Feature: API SERVICE
       | code           | message           |
       | <responseCode> | <responseMessage> |
     Examples:
-      | value     | responseCode | responseMessage        |
-      | abc       | 500          | something bad happened |
-      | .,!'^&?=* | 500          | something bad happened |
-      | VALID     | 200          | VALID                  |
-      |           | 200          | 9223372036854775807    |
+      | value   | responseCode | responseMessage        |
+      | abc     | 500          | something bad happened |
+      | !'^&?=* | 500          | something bad happened |
 
   @test
   Scenario Outline: User Api - Create request username validation

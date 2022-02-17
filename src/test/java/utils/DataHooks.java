@@ -1,8 +1,8 @@
 package utils;
 
 import io.restassured.response.ValidatableResponse;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import restapi.models.Buyer;
 
 import java.util.HashMap;

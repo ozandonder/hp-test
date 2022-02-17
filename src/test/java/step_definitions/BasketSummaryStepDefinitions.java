@@ -1,6 +1,6 @@
-package stepdefinitions;
+package step_definitions;
 
-import cucumber.api.java.en.Then;
+import io.cucumber.java.en.Then;
 import pages.BasketSummaryPage;
 
 public class BasketSummaryStepDefinitions {

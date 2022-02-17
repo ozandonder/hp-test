@@ -3,8 +3,8 @@ package restapi.requesters;
 import com.google.gson.Gson;
 import io.restassured.http.ContentType;
 import io.restassured.response.ValidatableResponse;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import restapi.models.Buyer;
 import utils.ConfigFileReader;
 
@@ -51,7 +51,7 @@ public class BuyerRequester extends ConfigFileReader {
         try {
             requestUrl = getConfigValue("api.base.url") + getConfigValue("buyer.path") + "/" + userName;
             response = given()
-                    .contentType(ContentType.JSON)
+                    .contentType("application/json")
                     .when()
                     .delete(requestUrl)
                     .then();

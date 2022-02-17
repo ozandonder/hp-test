@@ -1,8 +1,8 @@
-package stepdefinitions;
+package step_definitions;
 
-import cucumber.api.java.en.And;
-import cucumber.api.java.en.Given;
-import cucumber.api.java.en.Then;
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import io.restassured.response.ValidatableResponse;
 import org.json.simple.JSONObject;
 import pages.UserApiService;
@@ -25,14 +25,14 @@ public class UserApiServiceStepDefinitions extends StrongerDriver {
     private ValidatableResponse response;
     private JSONObject buyerJson;
     private Buyer buyer;
-    private int count = 0;
 
     @Given("^API Operator should create user$")
     public void apiOperatorShouldCreateUser(List<Map<String, String>> elementsList) {
         buyerJson = JsonUtils.getJson(configFileReader.getConfigValue("buyer.json.path"));
+        int count = 0;
         while (elementsList.size() > count) {
             Map<String, String> parameter = elementsList.get(count);
-            if (parameter.get("Value").equals("VALID")) {
+            if ("VALID".equals(parameter.get("Value"))) {
                 if (parameter.get("Key").equals("id") || parameter.get("Key").equals("userStatus")) {
                     buyerJson.put(parameter.get("Key"), getRandomInt(2));
                 } else {
@@ -49,6 +49,7 @@ public class UserApiServiceStepDefinitions extends StrongerDriver {
 
     @And("^API Operator set user$")
     public void apiOperatorSetUser() {
+        int count = 0;
         while (count < 10) {
             buyer = buyerRequester.getBuyerByUserName(buyerJson.get("username").toString());
             if (buyerJson.get("id").toString().equals(String.valueOf(buyer.getId())))
@@ -106,12 +107,6 @@ public class UserApiServiceStepDefinitions extends StrongerDriver {
     @Then("^Check delete api response$")
     public void checkDeleteApiResponse(List<Map<String, String>> elementsList) {
         response = dataHooks.getResponse();
-        while (count < 10) {
-            buyer = buyerRequester.getBuyerByUserName(buyerJson.get("username").toString());
-            if (!buyerJson.get("id").toString().equals(String.valueOf(buyer.getId())))
-                break;
-            count++;
-        }
         Map<String, String> parameters = elementsList.get(0);
         for (Map.Entry<String, String> entry : parameters.entrySet()) {
             if (entry.getKey().equals("message") && entry.getValue().equals("VALID")) {

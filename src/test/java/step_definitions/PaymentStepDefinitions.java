@@ -1,6 +1,6 @@
-package stepdefinitions;
+package step_definitions;
 
-import cucumber.api.java.en.And;
+import io.cucumber.java.en.And;
 import pages.PaymentPage;
 
 public class PaymentStepDefinitions {

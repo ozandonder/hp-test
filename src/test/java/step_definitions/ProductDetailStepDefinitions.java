@@ -1,6 +1,6 @@
-package stepdefinitions;
+package step_definitions;
 
-import cucumber.api.java.en.When;
+import io.cucumber.java.en.When;
 import io.restassured.response.ValidatableResponse;
 import org.json.simple.JSONObject;
 import pages.ProductDetailPage;
