@@ -5,7 +5,7 @@ import org.openqa.selenium.By;
 import utils.StrongerDriver;
 
 public class BasketPage extends StrongerDriver {
-    private static final By BASKET_HEADER_TITLE_TEXT = By.xpath("//*[@class='basket_headerTop_15H0U']//h1");
+    private static final By BASKET_HEADER_TITLE_TEXT = By.xpath("//*[contains(@class,'basket_headerTop')]//h1");
     private static final By CONTINUE_STEP_BUTTON = By.id("continue_step_btn");
     private static final String BASKET_HEADER_TITLE = "Sepetim";
 

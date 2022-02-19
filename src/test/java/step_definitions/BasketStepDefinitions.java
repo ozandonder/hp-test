@@ -12,6 +12,6 @@ public class BasketStepDefinitions extends StrongerDriver {
     @And("^Buyer should go to Payment Page")
     public void buyerShouldGoToPaymentPage() {
         basketPage.checkBasketPage().clickContinueOrderButton();
-        deliveryPage.checkDeliveryPage().clickChangePaymentMethod();
+        deliveryPage.checkDeliveryPage().clickContinueOrderButton();
     }
 }
